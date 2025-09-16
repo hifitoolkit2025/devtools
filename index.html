@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiFiToolkit - Developer Tools & Resources</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary: #6f42c1;
+            --secondary: #6610f2;
+            --light-bg: #f8f9fa;
+            --dark-bg: #212529;
+            --card-hover: #e9ecef;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .category-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background-color: var(--card-hover);
+        }
+        
+        .category-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem;
+        }
+        
+        .tool-link {
+            color: #495057;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            display: block;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+        
+        .tool-link:hover {
+            background-color: #e9ecef;
+            color: var(--primary);
+        }
+        
+        .search-box {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .search-box input {
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #e9ecef;
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="bi bi-tools me-2"></i>HiFiToolkit
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tools">All Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="#" class="btn btn-outline-primary me-2">Login</a>
+                    <a href="#" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">Developer Tools & Resources</h1>
+            <p class="lead mb-4">All the tools you need in one place - code formatters, converters, compilers, calculators and more.</p>
+            <a href="#tools" class="btn btn-light btn-lg">Explore Tools</a>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="search-box">
+                    <input type="text" class="form-control" placeholder="Search for tools..." id="searchInput">
+                    <button class="btn btn-primary"><i class="bi bi-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools by Category -->
+    <section class="container mb-5" id="tools">
+        <h2 class="text-center mb-5">Tools by Category</h2>
+        
+        <div class="row g-4" id="toolsContainer">
+            <!-- Categories will be dynamically inserted here -->
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="container mb-5" id="about">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="mb-4">About HiFiToolkit</h2>
+                <p class="lead">We provide a comprehensive set of developer tools, tutorials, and resources to help programmers be more productive and efficient in their work.</p>
+                <p>Our tools are designed to be fast, reliable, and easy to use, helping you focus on what matters most - building great software.</p>
+                <a href="/about-us/" class="btn btn-primary mt-3">Learn More About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>HiFiToolkit</h5>
+                    <p>Your all-in-one toolkit for development resources, converters, and utilities.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#home" class="text-white text-decoration-none">Home</a></li>
+                        <li><a href="#tools" class="text-white text-decoration-none">Tools</a></li>
+                        <li><a href="#about" class="text-white text-decoration-none">About</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h5>Legal</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/terms-and-conditions" class="text-white text-decoration-none">Terms</a></li>
+                        <li><a href="/privacy-policy" class="text-white text-decoration-none">Privacy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Connect With Us</h5>
+                    <div class="d-flex gap-3 mt-3">
+                        <a href="#" class="text-white"><i class="bi bi-twitter fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-facebook fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-github fs-4"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin fs-4"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 bg-light">
+            <div class="text-center">
+                <p>&copy; 2023 HiFiToolkit. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Data
+        const BASE_URL = 'https://www.hifitoolkit.com';
+        const staticRoutes = [
+            '', '/about-us/', '/html/introduction/', '/reactjs/introduction/', '/go/introduction/', 
+            '/artificial-intelligence/home/', '/html-interview/', '/artificial-intelligence-interview/', 
+            '/ai-ml-interview/', '/ai-theory-interview/', '/developer-tools/', '/calculator-tools/', 
+            '/pixels-converter/', '/html-compiler/', '/json-compiler/', '/go-compiler/', '/barcode-generator/', 
+            '/qrcode-generator/', '/word-counter/', '/signature-maker/', '/time-and-date/', '/pickerwheel/', 
+            '/html-formatter', '/html-validator', '/html-escape-unescape', '/css-minifier', '/css-beautifier', 
+            '/javascript-minifier', '/javascript-beautifier', '/xml-formatter', '/json-to-xml-converter', 
+            '/json-formatter', '/xml-validator', '/xml-to-json-converter', '/xsdxml-schema-generator', 
+            '/excel-html-generator', '/csv-to-xml-converter', '/csv-to-json-converter', '/yaml-validator', 
+            '/regex-builder', '/diff-checker', '/json-parser', '/percentage-calculator', '/age-calculator', 
+            '/profit-loss-calculator', '/loan-emi-calculator', '/real-estate-area-calculator', '/gst-calculator', 
+            '/compound-Interest-calculator', '/sip-calculator', '/ppf-calculator', '/scientific-calculator', 
+            '/px-to-em-converter', '/em-to-px-converter', '/px-to-rem-converter', '/rem-to-px-converter', 
+            '/inches-to-pixels', '/pixels-to-inches', '/vh-to-px', '/px-to-vh-converter', '/pt-to-px-converter', 
+            '/px-to-pt-converter', '/us-paper-sizes-to-pixels', '/c-paper-sizes-to-pixels', '/b-paper-sizes-to-pixels', 
+            '/a-paper-sizes-to-pixels', '/millimeters-to-pixels', '/pixels-to-millimeters', '/centimeters-to-pixels', 
+            '/pixels-to-centimeters', '/html/html-favicon/', '/html/html-images/', '/html/html-links/', 
+            '/html/html-css/', '/html/html-colors/', '/html/html-comments/', '/html/html-quotations/', 
+            '/html/html-paragraphs/', '/html/html-heading/', '/html/html-blocks/', '/html/html-attributes/', 
+            '/html/html-basic/', '/html/html-tables/', '/html/html-lists/', '/html/html-block-inline/', 
+            '/html/html-div/', '/html/html-id-classes/', '/html/html-iframes/', '/html/html-javascript/', 
+            '/go/introduction/', '/go/syntax/', '/go/variables/', '/go/go-comments/', '/go/go-constants/', 
+            '/go/go-output-functions/', '/go/go-formatting-verbs/', '/go/go-data-types/', '/go/go-arrays/', 
+            '/go/go-slices/', '/go/go-operators/', '/go/go-conditions/', '/go/go-switch/', '/go/go-for-loops/', 
+            '/go/go-functions/', '/go/go-struct/', '/go/go-maps/', '/go/go-interview-beginner/', 
+            '/html/html-layout-and-responsive/', '/html/html-head-element/', '/html/html-file-paths/', 
+            '/html/html-computer-code/', '/html/html-semantic-elements', '/html/html-style', '/html/html-entities', 
+            '/html/html-symbols', '/html/html-emojis', '/html/html-charsets', '/html/html-url-encode', 
+            '/html/html-vs-xhtml', '/generativeai/overview/', '/generativeai/how-generative-ai-works/', 
+            '/generativeai/types-of-generative-ai/', '/generativeai/hands-on-generative-ai/', 
+            '/generativeai/gen-ai-ethics/', '/generativeai/generative-ai-prompt/', 
+            '/generativeai/future-generative-ai/', '/binary-to-text-converter', '/hex-to-binary-converter', 
+            '/binary-to-hex-converter', '/ascii-to-binary-converter', '/binary-to-ascii-converter', 
+            '/decimal-to-binary-converter', '/binary-to-decimal-converter', '/text-to-ascii-converter', 
+            '/ascii-to-text-converter', '/hex-to-decimal-converter', '/decimal-to-hex-converter', 
+            '/octal-to-binary-converter', '/binary-to-octal-converter', '/octal-to-decimal-converter', 
+            '/decimal-to-octal-converter', '/hex-to-octal-converter', '/octal-to-hex-converter', 
+            '/text-to-octal-converter', '/octal-to-text-converter', '/text-to-hex-converter', 
+            '/hex-to-text-converter', '/text-to-decimal-converter', '/decimal-to-text-converter', 
+            '/css-tutorial/css-introduction', '/css-tutorial/css-fundamentals', '/css-tutorial/css-selectors', 
+            '/css-tutorial/css-colors-backgrounds', '/css-tutorial/css-text-fonts', '/css-tutorial/css-box-model', 
+            '/css-tutorial/css-display-positioning', '/css-tutorial/css-flexbox', '/css-tutorial/css-grid', 
+            '/css-tutorial/css-sizing-and-layout', '/css-tutorial/css-lists-and-tables', 
+            '/css-tutorial/css-transitions-and-animations', '/css-tutorial/css-responsive-design', 
+            '/css-tutorial/css-advanced-styling', '/css-tutorial/css-functions', 
+            '/css-tutorial/css-accessibility-and-print', '/css-tutorial/css-architecture-and-methodologies', 
+            '/css-tutorial/css-preprocessors-and-tools', '/css-tutorial/css-modern-and-experimental', 
+            '/binary-converter-tools', '/javascript-compiler', '/typescript-compiler', '/javascript-interview', 
+            '/length-converter', '/area-converter', '/weight-converter', '/volume-converter', 
+            '/temperature-converter', '/time-converter', '/digital-converter', '/parts-per-converter', 
+            '/speed-converter', '/pace-converter', '/pressure-converter', '/current-converter', 
+            '/voltage-converter', '/power-converter', '/reactive-power-converter', '/apparent-power-converter', 
+            '/energy-converter', '/volumetric-flow-rate-converter', '/illuminance-converter', 
+            '/frequency-converter', '/angle-converter', '/currency-converter', '/torque-converter', 
+            '/charge-converter', '/number-to-roman-converter', '/roman-numerals-to-converter', 
+            '/radioactivity-converter', '/image-editing-tools/', '/eudcation-and-study/', '/dictionary-lookup', 
+            '/thesaurus-tool', '/random-words-generator', '/periodic-table-data', '/image-converter', 
+            '/image-background-remover', '/image-resize', '/image-crop', '/image-rotate', '/image-flip', 
+            '/base64-to-image', '/image-to-base64', '/ico-convert', '/terms-and-conditions', '/privacy-policy', 
+            '/png-compress', '/jpg-compresss', '/image-watermark', '/reactjs/introduction', '/reactjs/roadmap', 
+            '/reactjs/installation', '/reactjs/features', '/reactjs/advantages-and-disadvantages', 
+            '/reactjs/architecture', '/reactjs/creating-a-react-application', '/reactjs/hooks', '/hex-to-pantone', 
+            '/rgb-to-pantone', '/hsv-to-pantone', '/cmyk-to-pantone', '/cmyk-to-hex', '/cmyk-to-rgb', 
+            '/cmyk-to-hsv', '/hsv-to-hex', '/hsv-to-rgb', '/hsv-to-cmyk', '/perl-interpreter', '/ruby-compiler', 
+            '/hex-to-rgb', '/rgb-to-cmyk', '/rgb-to-hsv', '/hex-to-hsv', '/rgb-to-hex', '/json-viewer', 
+            '/xml-viewer', '/yaml-viewer'
+        ];
+
+        // Categorize the routes
+        const categories = {
+            'HTML Tools': {
+                icon: 'bi-code-slash',
+                routes: staticRoutes.filter(route => route.includes('/html/') && !route.includes('interview') && !route.includes('tutorial'))
+            },
+            'CSS Tools': {
+                icon: 'bi-palette',
+                routes: staticRoutes.filter(route => route.includes('css-') || route.includes('/css-tutorial/'))
+            },
+            'JavaScript Tools': {
+                icon: 'bi-braces',
+                routes: staticRoutes.filter(route => route.includes('javascript') || route.includes('typescript') || route.includes('json') || route.includes('reactjs'))
+            },
+            'Go Language': {
+                icon: 'bi-filetype-go',
+                routes: staticRoutes.filter(route => route.startsWith('/go/'))
+            },
+            'Converters': {
+                icon: 'bi-arrow-left-right',
+                routes: staticRoutes.filter(route => route.includes('converter') || route.includes('to-') || route.includes('-to-'))
+            },
+            'Calculators': {
+                icon: 'bi-calculator',
+                routes: staticRoutes.filter(route => route.includes('calculator') || route.includes('-calculator'))
+            },
+            'Formatters & Validators': {
+                icon: 'bi-check-square',
+                routes: staticRoutes.filter(route => route.includes('formatter') || route.includes('validator') || route.includes('beautifier') || route.includes('minifier'))
+            },
+            'Generators': {
+                icon: 'bi-magic',
+                routes: staticRoutes.filter(route => route.includes('generator') || route.includes('maker') || route.includes('builder'))
+            },
+            'Image Tools': {
+                icon: 'bi-image',
+                routes: staticRoutes.filter(route => route.includes('image') || route.includes('png') || route.includes('jpg') || route.includes('ico'))
+            },
+            'Unit Converters': {
+                icon: 'bi-arrow-repeat',
+                routes: staticRoutes.filter(route => route.includes('-converter') && !route.includes('image') && !route.includes('binary') && !route.includes('text'))
+            },
+            'Interview Preparation': {
+                icon: 'bi-patch-question',
+                routes: staticRoutes.filter(route => route.includes('interview'))
+            },
+            'Tutorials & Learning': {
+                icon: 'bi-journal-bookmark',
+                routes: staticRoutes.filter(route => route.includes('introduction') || route.includes('tutorial') || route.includes('artificial-intelligence') || route.includes('generativeai'))
+            },
+            'Other Tools': {
+                icon: 'bi-tools',
+                routes: staticRoutes.filter(route => {
+                    const excludedCategories = [
+                        'html', 'css', 'javascript', 'go', 'converter', 'calculator', 
+                        'formatter', 'validator', 'generator', 'image', 'interview', 
+                        'tutorial', 'introduction', 'artificial-intelligence', 'generativeai'
+                    ];
+                    return !excludedCategories.some(cat => route.includes(cat));
+                })
+            }
+        };
+
+        // Function to generate display name from route
+        function generateDisplayName(route) {
+            if (route === '') return 'Home';
+            
+            // Remove leading and trailing slashes
+            let name = route.replace(/^\/|\/$/g, '');
+            
+            // Replace hyphens with spaces
+            name = name.replace(/-/g, ' ');
+            
+            // Capitalize each word
+            name = name.split('/').map(part => {
+                return part.split(' ').map(word => {
+                    return word.charAt(0).toUpperCase() + word.slice(1);
+                }).join(' ');
+            }).join(' - ');
+            
+            return name;
+        }
+
+        // Render categories and tools
+        function renderTools() {
+            const toolsContainer = document.getElementById('toolsContainer');
+            toolsContainer.innerHTML = '';
+            
+            for (const [category, data] of Object.entries(categories)) {
+                if (data.routes.length === 0) continue;
+                
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4';
+                
+                const card = document.createElement('div');
+                card.className = 'category-card';
+                
+                const header = document.createElement('div');
+                header.className = 'category-header';
+                header.innerHTML = `<h5 class="m-0"><i class="bi ${data.icon} me-2"></i>${category}</h5>`;
+                
+                const body = document.createElement('div');
+                body.className = 'card-body';
+                
+                const list = document.createElement('div');
+                
+                // Show up to 5 tools initially
+                data.routes.slice(0, 5).forEach(route => {
+                    const link = document.createElement('a');
+                    link.href = BASE_URL + route;
+                    link.className = 'tool-link';
+                    link.textContent = generateDisplayName(route);
+                    list.appendChild(link);
+                });
+                
+                // Show "View more" if there are more than 5 tools
+                if (data.routes.length > 5) {
+                    const viewMore = document.createElement('button');
+                    viewMore.className = 'btn btn-sm btn-outline-primary mt-2';
+                    viewMore.textContent = `View ${data.routes.length - 5} more...`;
+                    viewMore.addEventListener('click', function() {
+                        // Toggle showing all tools
+                        const hiddenTools = body.querySelectorAll('.tool-link:nth-child(n+6)');
+                        const isExpanded = body.getAttribute('data-expanded') === 'true';
+                        
+                        if (isExpanded) {
+                            hiddenTools.forEach(tool => tool.style.display = 'none');
+                            viewMore.textContent = `View ${data.routes.length - 5} more...`;
+                            body.setAttribute('data-expanded', 'false');
+                        } else {
+                            hiddenTools.forEach(tool => tool.style.display = 'block');
+                            viewMore.textContent = 'View less...';
+                            body.setAttribute('data-expanded', 'true');
+                        }
+                    });
+                    
+                    // Add the rest of the tools but hide them initially
+                    data.routes.slice(5).forEach(route => {
+                        const link = document.createElement('a');
+                        link.href = BASE_URL + route;
+                        link.className = 'tool-link';
+                        link.textContent = generateDisplayName(route);
+                        link.style.display = 'none';
+                        list.appendChild(link);
+                    });
+                    
+                    body.appendChild(viewMore);
+                }
+                
+                body.appendChild(list);
+                card.appendChild(header);
+                card.appendChild(body);
+                col.appendChild(card);
+                toolsContainer.appendChild(col);
+            }
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const toolLinks = document.querySelectorAll('.tool-link');
+            
+            toolLinks.forEach(link => {
+                const text = link.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    link.style.display = 'block';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        });
+
+        // Back to top button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'flex';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', renderTools);
+    </script>
+</body>
+</html>
